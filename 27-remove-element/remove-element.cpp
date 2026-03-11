@@ -1,18 +1,15 @@
 class Solution {
 public:
-    int solve(vector<int>& nums, int val, int index, int k)
-    {
-        if(index == nums.size())
-            return k;
-        if(nums[index] != val)
-        {
-            nums[k] = nums[index];
-            return solve(nums, val, index + 1, k + 1);
-        }
-        return solve(nums, val, index + 1, k);
-    }
-
     int removeElement(vector<int>& nums, int val) {
-        return solve(nums, val, 0, 0);
+        int j=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i] != val)
+            {
+                nums[j] = nums[i];
+                j++;
+            }
+        }
+        return j;
     }
 };
