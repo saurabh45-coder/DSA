@@ -19,21 +19,21 @@ public:
         q.push(root->right);
         while(!q.empty())
         {
-            TreeNode *left = q.front();
+            TreeNode *temp = q.front();
             q.pop();
-            TreeNode *right = q.front();
+            TreeNode *temp1 = q.front();
             q.pop();
-            if(!left && !right)
+            if(!temp && !temp1)
                 continue;
-            if(!left || !right)
+            if(!temp || !temp1)
                 return false;
-            if(left->val != right->val)
+            if(temp->val != temp1->val)
                 return false;
-            q.push(left->left);
-            q.push(right->right);
+            q.push(temp->left);
+            q.push(temp1->right);
 
-            q.push(left->right);
-            q.push(right->left);
+            q.push(temp->right);
+            q.push(temp1->left);
         }
         return true;
     }
